@@ -38,20 +38,29 @@ class Products with ChangeNotifier{
     ),
   ];
 // Methods
+  
+
   List<Product> get items{
     return [..._items];
   }
-
-  List _favId=[];
-
-  void addFav(id){
-    _favId.add(id);
-    notifyListeners();
+  
+  List<Product> get fav{
+    return _items.where((element) => element.isFavorite ).toList();
   }
-  List<Product> get favId{
-    return [..._favId];
-}
+
+  
+
+  
+ 
   Product findById(id){
     return _items.firstWhere((product) => product.id==id);
   }
+  // void showFavoritesOnly(){
+  //   _showFavoritesOnly =true;
+  //   notifyListeners();
+  // }
+  // void showAll(){
+  //   _showFavoritesOnly =  false;
+  //   notifyListeners();
+  // }
 }
